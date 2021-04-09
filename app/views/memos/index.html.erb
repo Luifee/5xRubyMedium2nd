@@ -1,0 +1,15 @@
+<h1 class="title">筆記簿</h1>
+<% @memos.each do |memo| %>
+  <div class="content">
+    <h2 class="title">
+      <%= link_to memo.title, edit_memo_path(memo), class: 'has-text-grey-darker' %>
+      <%= content_tag :span, '已發佈', class: 'tag is-primary' if memo.published? %>
+    </h2>
+    <p><%= strip_tags(memo.content).truncate(200) %></p>
+    <p>最後編輯於：<%= time_ago_in_words(memo.updated_at) %>前
+      <%= link_to "編輯", edit_memo_path(memo), class: 'button is-small' %>
+      <%= link_to "刪除", memo_path(memo), method: 'delete', class: 'button is-small is-danger', data: {confirm: "確認刪除?"} %>
+    </p>
+  </div>
+  <hr />
+<% end %>
