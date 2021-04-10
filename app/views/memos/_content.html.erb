@@ -1,10 +1,15 @@
+<% if memo.errors.any? %>
+  <div class="notification is-warning">
+    <%= memo.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
 <%= form_for(memo) do |form| %>
   <%= form.label :title, "標題" %>
   <%= form.text_field :title, class: 'input' %>
   <%= form.label :content, "內文" %>
   <%= form.text_area :content, class: 'textarea' %>
-  <%= form.submit "儲存草稿", name: 'save', class: 'button is-light' %>
-  <%= form.submit "分享筆記", name: 'publish', class: 'button is-info' %>
-  <%= form.submit "收回筆記", name: 'unpublish', class: 'button is-warning' %>
+  <%= form.submit "儲存筆記", name: 'save', class: 'button is-light' %>
+  <%= form.submit "分享筆記", name: 'publish', class: 'button is-info' if memo.may_publish? %>
+  <%= form.submit "收回筆記", name: 'unpublish', class: 'button is-warning' if memo.may_unpublish? %>
 <% end %>
-

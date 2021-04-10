@@ -6,7 +6,8 @@
       <%= content_tag :span, '已發佈', class: 'tag is-primary' if memo.published? %>
     </h2>
     <p><%= strip_tags(memo.content).truncate(200) %></p>
-    <p>最後編輯於：<%= time_ago_in_words(memo.updated_at) %>前
+    <p>最後編輯於：<%= time_ago_in_words(memo.updated_at) %>前</p>
+    <p>
       <%= link_to "編輯", edit_memo_path(memo), class: 'button is-small' %>
       <%= link_to "刪除", memo_path(memo), method: 'delete', class: 'button is-small is-danger', data: {confirm: "確認刪除?"} %>
     </p>
