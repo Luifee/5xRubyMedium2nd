@@ -56,7 +56,7 @@ class MemosController < ApplicationController
 
   private
   def find_memo
-    @memo = current_user.memos.find(params[:id])
+    @memo = current_user.memos.friendly.find(params[:id])
   end
 
   def memo_params
