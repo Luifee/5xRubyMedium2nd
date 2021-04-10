@@ -1,7 +1,17 @@
-<h2 class="title">會員資料 <%= resource_name.to_s.humanize %></h2>
+<h2 class="title">編輯個人資料</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :username, "使用者名稱" %><br />
+      <%= f.text_field :username, autocomplete: "username", class: 'input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :intro, "使用者簡介" %><br />
+      <%= f.text_area :intro, class: 'textarea' %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -13,23 +23,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password, "新密碼" %> <i>(若不變更密碼，保持空白)</i><br />
+    <%= f.label :password, "新密碼" %> <i>(若不變更密碼，保持空白)</i>
     <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
     <% if @minimum_password_length %>
-      <br />
       <em class="help">長度至少<%= @minimum_password_length %>字元</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "確認新密碼" %><br />
+    <%= f.label :password_confirmation, "確認新密碼" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
   </div>
-
+  
+  <% if false %>
+  <%# 開發期間頻繁變更又不想重複輸入密碼，就先收起來 %>
   <div class="field">
-    <%= f.label :current_password, "現行密碼" %> <em>(輸入現行密碼確認上述變更)</em><br />
+    <%= f.label :current_password, "現行密碼" %> <i class="has-text-danger">必填</i>
     <%= f.password_field :current_password, autocomplete: "current-password", class: 'input' %>
+      <em class="help">輸入現行密碼確認上述變更</em>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "完成編輯", class: 'button is-primary' %>
