@@ -1,0 +1,9 @@
+@import "bulma.css";
+@import "memos.scss";
+
+.navbar-link {
+  .user-avatar {
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
