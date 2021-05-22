@@ -7,25 +7,11 @@
     <%= f.label :username, "使用者名稱" %><br />
       <%= f.text_field :username, autocomplete: "username", class: 'input' %>
   </div>
-
-  <%= f.label :avatar, "使用者圖片" %>
-  <div class="file has-name is-fullwidth">
-    <label class="file-label">
-      <%= f.file_field :avatar, class: 'file-input' %>
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
-          </span>
-          <span class="file-label">
-            選擇檔案
-          </span>
-        </span>
-        <span class="file-name">
-		pending params[:avatar].original_filename
-        </span>
-    </label>
+  <div class="field">
+    <%= f.label :avatar, "使用者圖片" %><br />
+      <%= f.file_field :avatar %><br />
+      <%= avatar(current_user) %>
   </div>
-  <%= avatar(current_user) %>
 
   <div class="field">
     <%= f.label :intro, "使用者簡介" %><br />
